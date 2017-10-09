@@ -1,7 +1,7 @@
 {
   "name": "web3-detect-network",
-  "version": "0.0.1",
-  "description": "Detect Web3 provider network.",
+  "version": "0.0.2",
+  "description": "Detect network from Web3 provider.",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/tape/bin/tape test/*.js"

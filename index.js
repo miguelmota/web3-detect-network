@@ -35,11 +35,14 @@ async function detectNetwork (provider) {
 
   let netId = null
 
+  // MetamaskInpageProvider
   if (
     provider.publicConfigStore &&
     provider.publicConfigStore._state &&
     provider.publicConfigStore._state.networkVersion) {
     netId = provider.publicConfigStore._state.networkVersion
+
+  // Web3.providers.HttpProvider
   } else if (provider.host) {
     const {subdomain, domain, tld} = parseDomain(provider.host)
 
@@ -47,8 +50,11 @@ async function detectNetwork (provider) {
       netId = networksIds[subdomain]
     }
   } else if (window !== undefined && window.web3) {
+    // web3.js v<1.0
     if (web3.version && web3.version.getNetwork) {
       netId = await pify(web3.version.getNetwork)()
+
+    // web3.js v1.0+
     } else if (web3.eth && web3.eth.net && web3.eth.net.getId) {
       netId = await pify(web3.eth.net.getId)()
     }
