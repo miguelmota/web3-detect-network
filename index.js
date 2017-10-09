@@ -26,7 +26,7 @@ const networksIds = {
 async function detectNetwork (provider) {
   let netId = null
 
-  if (typeof provider === 'object') {
+  if (provider instanceof Object) {
     // MetamaskInpageProvider
     if (
       provider.publicConfigStore &&

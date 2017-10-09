@@ -1,6 +1,6 @@
 {
   "name": "web3-detect-network",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Detect network from Web3 provider.",
   "main": "index.js",
   "scripts": {
