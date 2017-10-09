@@ -24,32 +24,25 @@ const networksIds = {
 }
 
 async function detectNetwork (provider) {
-  const unknownNetwork = {
-    id: null,
-    type: 'unknown'
-  }
-
-  if (typeof provider !== 'object') {
-    return unknownNetwork
-  }
-
   let netId = null
 
-  // MetamaskInpageProvider
-  if (
-    provider.publicConfigStore &&
-    provider.publicConfigStore._state &&
-    provider.publicConfigStore._state.networkVersion) {
-    netId = provider.publicConfigStore._state.networkVersion
+  if (typeof provider === 'object') {
+    // MetamaskInpageProvider
+    if (
+      provider.publicConfigStore &&
+      provider.publicConfigStore._state &&
+      provider.publicConfigStore._state.networkVersion) {
+      netId = provider.publicConfigStore._state.networkVersion
 
-  // Web3.providers.HttpProvider
-  } else if (provider.host) {
-    const {subdomain, domain, tld} = parseDomain(provider.host)
+    // Web3.providers.HttpProvider
+    } else if (provider.host) {
+      const {subdomain, domain, tld} = parseDomain(provider.host)
 
-    if (domain === 'infura' && tld === 'io') {
-      netId = networksIds[subdomain]
+      if (domain === 'infura' && tld === 'io') {
+        netId = networksIds[subdomain]
+      }
     }
-  } else if (window !== undefined && window.web3) {
+  } else if (typeof window !== 'undefined' && window.web3) {
     // web3.js v<1.0
     if (web3.version && web3.version.getNetwork) {
       netId = await pify(web3.version.getNetwork)()
