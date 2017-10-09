@@ -1,0 +1,51 @@
+{
+  "name": "web3-detect-network",
+  "version": "0.0.1",
+  "description": "Detect Web3 provider network.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/tape/bin/tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguelmota/web3-detect-network"
+  },
+  "keywords": [
+    "web3",
+    "ethereum",
+    "eth",
+    "network",
+    "detect",
+    "mainnet",
+    "testnet",
+    "id",
+    "type",
+    "smart",
+    "contract"
+  ],
+  "author": {
+    "name": "Miguel Mota",
+    "email": "hello@miguelmota.com",
+    "url": "https://miguelmota.com/"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/miguelmota/web3-detect-network/blob/master/LICENSE.md"
+  },
+  "bugs": {
+    "url": "https://github.com/miguelmota/web3-detect-network/issues"
+  },
+  "homepage": "https://github.com/miguelmota/web3-detect-network",
+  "devDependencies": {
+    "tape": "^4.8.0",
+    "truffle-contract": "^3.0.0",
+    "web3": "^1.0.0-beta.22"
+  },
+  "engines": {
+    "node": ">=7.9"
+  },
+  "dependencies": {
+    "parse-domain": "^1.1.0",
+    "pify": "^3.0.0"
+  }
+}
