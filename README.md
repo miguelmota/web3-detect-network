@@ -19,14 +19,13 @@ npm install web3-detect-network
 # Usage
 
 ```javascript
-const { crawl } = require('adstxt')
+const detectNetwork = require('web3-detect-network')
 
 ;(async () => {
 
 const network = await detectNetwork(web3.currentProvider)
 
 console.log(network)
-
 /*
 {
   "id": "4",
