@@ -1,3 +1,7 @@
+"use strict";
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 (function e(t, n, r) {
   function s(o, u) {
     if (!n[o]) {
@@ -7,7 +11,9 @@
         var n = t[o][1][e];return s(n ? n : e);
       }, l, l.exports, e, t, n, r);
     }return n[o].exports;
-  }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) s(r[o]);return s;
+  }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) {
+    s(r[o]);
+  }return s;
 })({ 1: [function (require, module, exports) {
     'use strict';
 
@@ -132,7 +138,7 @@
         return null;
       }
 
-      if (!options || typeof options !== "object") {
+      if (!options || (typeof options === "undefined" ? "undefined" : _typeof(options)) !== "object") {
         options = Object.create(null);
       }
       if ("privateTlds" in options === false) {
@@ -189,14 +195,14 @@
   }, {}], 4: [function (require, module, exports) {
     'use strict';
 
-    const processFn = function (fn, opts) {
+    var processFn = function processFn(fn, opts) {
       return function () {
         var _this = this;
 
-        const P = opts.promiseModule;
-        const args = new Array(arguments.length);
+        var P = opts.promiseModule;
+        var args = new Array(arguments.length);
 
-        for (let i = 0; i < arguments.length; i++) {
+        for (var i = 0; i < arguments.length; i++) {
           args[i] = arguments[i];
         }
 
@@ -204,10 +210,10 @@
           if (opts.errorFirst) {
             args.push(function (err, result) {
               if (opts.multiArgs) {
-                const results = new Array(arguments.length - 1);
+                var results = new Array(arguments.length - 1);
 
-                for (let i = 1; i < arguments.length; i++) {
-                  results[i - 1] = arguments[i];
+                for (var _i = 1; _i < arguments.length; _i++) {
+                  results[_i - 1] = arguments[_i];
                 }
 
                 if (err) {
@@ -225,10 +231,10 @@
           } else {
             args.push(function (result) {
               if (opts.multiArgs) {
-                const results = new Array(arguments.length - 1);
+                var results = new Array(arguments.length - 1);
 
-                for (let i = 0; i < arguments.length; i++) {
-                  results[i] = arguments[i];
+                for (var _i2 = 0; _i2 < arguments.length; _i2++) {
+                  results[_i2] = arguments[_i2];
                 }
 
                 resolve(results);
@@ -250,16 +256,16 @@
         promiseModule: Promise
       }, opts);
 
-      const filter = function (key) {
-        const match = function (pattern) {
+      var filter = function filter(key) {
+        var match = function match(pattern) {
           return typeof pattern === 'string' ? key === pattern : pattern.test(key);
         };
         return opts.include ? opts.include.some(match) : !opts.exclude.some(match);
       };
 
-      let ret;
+      var ret = void 0;
       if (typeof obj === 'function') {
-        ret = function () {
+        ret = function ret() {
           if (opts.excludeMain) {
             return obj.apply(this, arguments);
           }
@@ -270,9 +276,9 @@
         ret = Object.create(Object.getPrototypeOf(obj));
       }
 
-      for (const key in obj) {
+      for (var key in obj) {
         // eslint-disable-line guard-for-in
-        const x = obj[key];
+        var x = obj[key];
         ret[key] = typeof x === 'function' && filter(key) ? processFn(x, opts) : x;
       }
 

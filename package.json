@@ -1,11 +1,11 @@
 {
   "name": "web3-detect-network",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Detect network from Web3 provider.",
   "main": "/dist/bundle.js",
   "scripts": {
     "test": "./node_modules/tape/bin/tape test/*.js",
-    "build": "browserify -t [babelify] index.js | babel --plugins transform-es2015-arrow-functions > dist/bundle.js"
+    "build": "browserify -t [babelify] index.js | babel --presets es2015 > dist/bundle.js"
   },
   "repository": {
     "type": "git",
