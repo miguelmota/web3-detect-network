@@ -1,6 +1,6 @@
 {
   "name": "web3-detect-network",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Detect network from Web3 provider.",
   "main": "/dist/bundle.js",
   "scripts": {
@@ -39,8 +39,11 @@
   "homepage": "https://github.com/miguelmota/web3-detect-network",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-plugin-syntax-async-generators": "^6.13.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-es2015-block-scoping": "^6.26.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "tape": "^4.8.0",
