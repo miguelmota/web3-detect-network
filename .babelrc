@@ -1,4 +1,4 @@
 {
   "presets": ["es2015"],
-  "plugins": ["syntax-async-generators","transform-es2015-block-scoping","transform-es2015-arrow-functions","async-to-promises","transform-es2015-destructuring"]
+  "plugins": ["syntax-async-generators","transform-es2015-block-scoping","async-to-promises","transform-es2015-destructuring","transform-es2015-arrow-functions"]
 }
