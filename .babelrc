@@ -1,3 +1,3 @@
 {
-  "plugins": ["syntax-async-generators","transform-es2015-block-scoping","transform-es2015-arrow-functions","async-to-promises"]
+  "plugins": ["syntax-async-generators","transform-es2015-block-scoping","transform-es2015-arrow-functions","async-to-promises","transform-es2015-destructuring"]
 }

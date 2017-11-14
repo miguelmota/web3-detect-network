@@ -25,7 +25,7 @@ var networksIds = {
 };
 
 function detectNetwork(provider) {
-  var netId, subdomain, domain, tld, type, _test, _test2, _test3;
+  var netId, _parseDomain, subdomain, domain, tld, type, _test, _test2, _test3;
 
   return Promise.resolve().then(function () {
     netId = null;
@@ -39,7 +39,10 @@ function detectNetwork(provider) {
     } else {
       if (_test) {
         if (provider.host) {
-          ({ subdomain, domain, tld } = parseDomain(provider.host));
+          _parseDomain = parseDomain(provider.host);
+          subdomain = _parseDomain.subdomain;
+          domain = _parseDomain.domain;
+          tld = _parseDomain.tld;
 
 
           if (domain === 'infura' && tld === 'io') {
