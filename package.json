@@ -1,10 +1,11 @@
 {
   "name": "web3-detect-network",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Detect network from Web3 provider.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/tape/bin/tape test/*.js"
+    "test": "./node_modules/tape/bin/tape test/*.js",
+    "build": "browserify -t [babelify] index.js -o dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,9 @@
   },
   "homepage": "https://github.com/miguelmota/web3-detect-network",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
     "tape": "^4.8.0",
     "truffle-contract": "^3.0.0",
     "web3": "^1.0.0-beta.22"
