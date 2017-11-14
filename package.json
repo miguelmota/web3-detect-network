@@ -1,8 +1,8 @@
 {
   "name": "web3-detect-network",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Detect network from Web3 provider.",
-  "main": "index.js",
+  "main": "/dist/bundle.js",
   "scripts": {
     "test": "./node_modules/tape/bin/tape test/*.js",
     "build": "browserify -t [babelify] index.js -o dist/bundle.js"
