@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-let detectNetwork = (() => {
+var detectNetwork = (() => {
   var _ref = _asyncToGenerator(function* (provider) {
-    let netId = null;
+    var netId = null;
 
     if (provider instanceof Object) {
       // MetamaskInpageProvider
@@ -10,7 +10,7 @@ let detectNetwork = (() => {
 
         // Web3.providers.HttpProvider
       } else if (provider.host) {
-        const { subdomain, domain, tld } = parseDomain(provider.host);
+        var { subdomain, domain, tld } = parseDomain(provider.host);
 
         if (domain === 'infura' && tld === 'io') {
           netId = networksIds[subdomain];
@@ -31,7 +31,7 @@ let detectNetwork = (() => {
       netId = null;
     }
 
-    const type = networksTypes[netId] || 'unknown';
+    var type = networksTypes[netId] || 'unknown';
 
     return {
       id: netId,
@@ -51,10 +51,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
  * to detect network.
  */
 
-const pify = require('pify');
-const parseDomain = require('parse-domain');
+var pify = require('pify');
+var parseDomain = require('parse-domain');
 
-const networksTypes = {
+var networksTypes = {
   1: 'main',
   2: 'morden',
   3: 'ropsten',
@@ -62,7 +62,7 @@ const networksTypes = {
   4: 'rinkeby'
 };
 
-const networksIds = {
+var networksIds = {
   main: 1,
   mainnet: 1,
   morden: 2,
