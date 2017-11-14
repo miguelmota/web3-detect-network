@@ -1,4 +1,51 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+let detectNetwork = (() => {
+  var _ref = _asyncToGenerator(function* (provider) {
+    let netId = null;
+
+    if (provider instanceof Object) {
+      // MetamaskInpageProvider
+      if (provider.publicConfigStore && provider.publicConfigStore._state && provider.publicConfigStore._state.networkVersion) {
+        netId = provider.publicConfigStore._state.networkVersion;
+
+        // Web3.providers.HttpProvider
+      } else if (provider.host) {
+        const { subdomain, domain, tld } = parseDomain(provider.host);
+
+        if (domain === 'infura' && tld === 'io') {
+          netId = networksIds[subdomain];
+        }
+      }
+    } else if (typeof window !== 'undefined' && window.web3) {
+      // web3.js v<1.0
+      if (web3.version && web3.version.getNetwork) {
+        netId = yield pify(web3.version.getNetwork)();
+
+        // web3.js v1.0+
+      } else if (web3.eth && web3.eth.net && web3.eth.net.getId) {
+        netId = yield pify(web3.eth.net.getId)();
+      }
+    }
+
+    if (netId === undefined) {
+      netId = null;
+    }
+
+    const type = networksTypes[netId] || 'unknown';
+
+    return {
+      id: netId,
+      type: type
+    };
+  });
+
+  return function detectNetwork(_x) {
+    return _ref.apply(this, arguments);
+  };
+})();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 /**
  * TODO: use actual smart contracts and genesis blocks
  * to detect network.
@@ -23,45 +70,6 @@ const networksIds = {
   kovan: 42,
   rinkeby: 4
 };
-
-async function detectNetwork(provider) {
-  let netId = null;
-
-  if (provider instanceof Object) {
-    // MetamaskInpageProvider
-    if (provider.publicConfigStore && provider.publicConfigStore._state && provider.publicConfigStore._state.networkVersion) {
-      netId = provider.publicConfigStore._state.networkVersion;
-
-      // Web3.providers.HttpProvider
-    } else if (provider.host) {
-      const { subdomain, domain, tld } = parseDomain(provider.host);
-
-      if (domain === 'infura' && tld === 'io') {
-        netId = networksIds[subdomain];
-      }
-    }
-  } else if (typeof window !== 'undefined' && window.web3) {
-    // web3.js v<1.0
-    if (web3.version && web3.version.getNetwork) {
-      netId = await pify(web3.version.getNetwork)();
-
-      // web3.js v1.0+
-    } else if (web3.eth && web3.eth.net && web3.eth.net.getId) {
-      netId = await pify(web3.eth.net.getId)();
-    }
-  }
-
-  if (netId === undefined) {
-    netId = null;
-  }
-
-  const type = networksTypes[netId] || 'unknown';
-
-  return {
-    id: netId,
-    type: type
-  };
-}
 
 module.exports = detectNetwork;
 

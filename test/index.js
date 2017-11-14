@@ -1,5 +1,5 @@
 const test = require('tape')
-const detectNetwork = require('../index')
+const detectNetwork = require('../')
 const Web3 = require('web3')
 const tc = require('truffle-contract')
 
