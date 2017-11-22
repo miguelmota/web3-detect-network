@@ -1,6 +1,6 @@
 {
   "name": "web3-detect-network",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Detect network from Web3 provider.",
   "main": "dist/bundle.js",
   "scripts": {
@@ -40,6 +40,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-plugin-async-to-promises": "^1.0.5",
     "babel-plugin-syntax-async-generators": "^6.13.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
@@ -58,7 +59,7 @@
     "node": ">=7.9"
   },
   "dependencies": {
-    "parse-domain": "^1.1.0",
-    "pify": "^3.0.0"
+    "bluebird": "^3.5.1",
+    "parse-domain": "^1.1.0"
   }
 }

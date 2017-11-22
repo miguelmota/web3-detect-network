@@ -3,7 +3,7 @@
  * to detect network.
  */
 
-const pify = require('pify')
+const pify = require('bluebird').promisify
 const parseDomain = require('parse-domain')
 
 const networksTypes = {

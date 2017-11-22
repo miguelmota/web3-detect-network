@@ -5,7 +5,7 @@
  * to detect network.
  */
 
-var pify = require('pify');
+var pify = require('bluebird').promisify;
 var parseDomain = require('parse-domain');
 
 var networksTypes = {
