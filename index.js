@@ -7,7 +7,7 @@ const pify = require('bluebird').promisify
 const parseDomain = require('parse-domain')
 
 const networksTypes = {
-  1: 'main',
+  1: 'mainnet',
   2: 'morden',
   3: 'ropsten',
   42: 'kovan',
