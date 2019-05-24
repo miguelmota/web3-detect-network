@@ -4,6 +4,7 @@
  */
 
 const pify = require('bluebird').promisify
+const url = require('url')
 const parseDomain = require('parse-domain')
 
 const networksTypes = {
@@ -36,7 +37,8 @@ async function detectNetwork (provider) {
 
     // Web3.providers.HttpProvider
     } else if (provider.host) {
-      const {subdomain, domain, tld} = parseDomain(provider.host)
+      const parsed = url.parse(provider.host)
+      const {subdomain, domain, tld} = parseDomain(parsed.host)
 
       if (domain === 'infura' && tld === 'io') {
         netId = networksIds[subdomain]

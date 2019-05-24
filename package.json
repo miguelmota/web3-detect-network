@@ -1,6 +1,6 @@
 {
   "name": "web3-detect-network",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Detect network from Web3 provider.",
   "main": "dist/bundle.js",
   "scripts": {

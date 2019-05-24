@@ -21,3 +21,18 @@ test('detect network', async (t) => {
   t.equal(net_2.id, 4)
   t.equal(net_2.type, 'rinkeby')
 })
+
+test('detect websocket network', async (t) => {
+  t.plan(2)
+
+  const contract = tc()
+
+  const providerUrl = 'wss://rinkeby.infura.io/ws'
+
+  const provider = new Web3.providers.HttpProvider(providerUrl)
+  contract.setProvider(provider)
+
+  const net_2 = await detectNetwork(provider)
+  t.equal(net_2.id, 4)
+  t.equal(net_2.type, 'rinkeby')
+})

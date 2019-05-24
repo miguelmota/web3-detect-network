@@ -6,6 +6,7 @@
  */
 
 var pify = require('bluebird').promisify;
+var url = require('url');
 var parseDomain = require('parse-domain');
 
 var networksTypes = {
@@ -26,7 +27,7 @@ var networksIds = {
 };
 
 function detectNetwork(provider) {
-  var netId, _parseDomain, subdomain, domain, tld, type, _test, _test2, _test3;
+  var netId, parsed, _parseDomain, subdomain, domain, tld, type, _test, _test2, _test3;
 
   return Promise.resolve().then(function () {
     netId = null;
@@ -40,7 +41,8 @@ function detectNetwork(provider) {
     } else {
       if (_test) {
         if (provider.host) {
-          _parseDomain = parseDomain(provider.host);
+          parsed = url.parse(provider.host);
+          _parseDomain = parseDomain(parsed.host);
           subdomain = _parseDomain.subdomain;
           domain = _parseDomain.domain;
           tld = _parseDomain.tld;
